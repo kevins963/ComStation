@@ -15,7 +15,9 @@ namespace ComStation
 
         public override Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            throw new NotImplementedException();
+            NavigationService.Navigate(typeof(View.SerialView));
+
+            return Task.CompletedTask;
         }
     }
 }

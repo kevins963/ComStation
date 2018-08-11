@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="ComStation.View.SerialView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ComStation.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ComStation.ViewModel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:SerialViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{x:Bind ViewModel.Devices}"
+                  SelectedItem="{Binding SelectedSerialDevice, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding PortName}" Foreground="Black" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Orientation="Vertical" BorderBrush="Black" BorderThickness="2" Grid.Column="1">
+
+            <CheckBox IsThreeState="True">
+                <CheckBox.Content>
+                    <TextBlock Text="Connected"/>
+                </CheckBox.Content>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>
+                    <TextBlock Text="RXD"/>
+                </CheckBox.Content>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>
+                    <TextBlock Text="TXD"/>
+                </CheckBox.Content>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>
+                    <TextBlock Text="CTS"/>
+                </CheckBox.Content>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>
+                    <TextBlock Text="DCD"/>
+                </CheckBox.Content>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>
+                    <TextBlock Text="DSR"/>
+                </CheckBox.Content>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>
+                    <TextBlock Text="Ring"/>
+                </CheckBox.Content>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>
+                    <TextBlock Text="Break"/>
+                </CheckBox.Content>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>
+                    <TextBlock Text="Error"/>
+                </CheckBox.Content>
+            </CheckBox>
+        </StackPanel>
+    </Grid>
+</Page>
