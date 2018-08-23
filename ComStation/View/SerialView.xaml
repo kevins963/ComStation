@@ -12,67 +12,39 @@
     <Page.DataContext>
         <vm:SerialViewModel x:Name="ViewModel" />
     </Page.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView ItemsSource="{x:Bind ViewModel.Devices}"
-                  SelectedItem="{Binding SelectedSerialDevice, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding PortName}" Foreground="Black" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
 
         <StackPanel Orientation="Vertical" BorderBrush="Black" BorderThickness="2" Grid.Column="1">
-
-            <CheckBox IsThreeState="True">
-                <CheckBox.Content>
-                    <TextBlock Text="Connected"/>
-                </CheckBox.Content>
-            </CheckBox>
-            <CheckBox>
-                <CheckBox.Content>
-                    <TextBlock Text="RXD"/>
-                </CheckBox.Content>
-            </CheckBox>
-            <CheckBox>
-                <CheckBox.Content>
-                    <TextBlock Text="TXD"/>
-                </CheckBox.Content>
-            </CheckBox>
-            <CheckBox>
-                <CheckBox.Content>
-                    <TextBlock Text="CTS"/>
-                </CheckBox.Content>
-            </CheckBox>
-            <CheckBox>
-                <CheckBox.Content>
-                    <TextBlock Text="DCD"/>
-                </CheckBox.Content>
-            </CheckBox>
-            <CheckBox>
-                <CheckBox.Content>
-                    <TextBlock Text="DSR"/>
-                </CheckBox.Content>
-            </CheckBox>
-            <CheckBox>
-                <CheckBox.Content>
-                    <TextBlock Text="Ring"/>
-                </CheckBox.Content>
-            </CheckBox>
-            <CheckBox>
-                <CheckBox.Content>
-                    <TextBlock Text="Break"/>
-                </CheckBox.Content>
-            </CheckBox>
-            <CheckBox>
-                <CheckBox.Content>
-                    <TextBlock Text="Error"/>
-                </CheckBox.Content>
-            </CheckBox>
+                <ComboBox Header="Ports" ItemsSource="{x:Bind ViewModel.Devices}"
+                  SelectedItem="{Binding SelectedSerialDevice, Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding PortName}" Foreground="Black" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            <ComboBox Header="Baud" ItemsSource="{x:Bind Baudrates}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Open"/>
+            <CheckBox Content="Connected"/>
+            <CheckBox Content="RXD"/>
+            <CheckBox Content="TXD"/>
+            <CheckBox Content="CTS"/>
+            <CheckBox Content="DCD"/>
+            <CheckBox Content="DSR"/>
+            <CheckBox Content="Ring"/>
+            <CheckBox Content="Break"/>
+            <CheckBox Content="Error"/>
         </StackPanel>
     </Grid>
 </Page>

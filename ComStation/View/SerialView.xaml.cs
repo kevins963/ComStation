@@ -22,9 +22,23 @@ namespace ComStation.View
     /// </summary>
     public sealed partial class SerialView : Page
     {
+        public List<String> Baudrates
+        {
+            get;
+            private set;
+        }
+
         public SerialView()
         {
             this.InitializeComponent();
+
+            var baudrates = new List<int>
+            {
+                1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200, 230400, 250000, 460800, 921600
+            };
+            
+            Baudrates = new List<String>();
+            baudrates.ForEach(i =>  Baudrates.Add(i.ToString()));
         }
     }
 }
