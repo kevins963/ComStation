@@ -19,6 +19,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <ScrollViewer Width="Auto" Height="Auto" Grid.Column="0">
+            <TextBlock Width="Auto" Height="Auto" Text="{Binding OutputData}"/>
+        </ScrollViewer>
         <StackPanel Orientation="Vertical" BorderBrush="Black" BorderThickness="2" Grid.Column="1">
                 <ComboBox Header="Ports" ItemsSource="{x:Bind ViewModel.Devices}"
                   SelectedItem="{Binding SelectedSerialDevice, Mode=TwoWay}">
@@ -35,7 +38,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Content="Open"/>
+            <Button Content="Open" Command="{Binding OpenPortCommand}"/>
             <CheckBox Content="Connected"/>
             <CheckBox Content="RXD"/>
             <CheckBox Content="TXD"/>
